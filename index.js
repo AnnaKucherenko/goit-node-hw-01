@@ -1,9 +1,9 @@
-// const yargs = require("yargs");
-// const {hideBin} = require("yargs/helpers");
+const yargs = require("yargs");
+const {hideBin} = require("yargs/helpers");
 
 const contactsOperations = require('./contacts');
 
-const invokeAction = async({action, id, data})=>{
+const invokeAction = async({action, id, name, email, phone})=>{
     switch(action){
         case "list":
             const contacts = await contactsOperations.listContacts();
@@ -17,11 +17,11 @@ const invokeAction = async({action, id, data})=>{
             console.log(contact);
             break;
         case "add":
-            const newContact = await contactsOperations.addContact(data);
+            const newContact = await contactsOperations.addContact(name, email, phone);
             console.log(newContact);
             break;
         case "updateById":
-            const updateContact = await contactsOperations.updateContact(id, data);
+            const updateContact = await contactsOperations.updateContact(id, name, email, phone);
             if(!updateContact){
                 throw new Error(`Contact with id=${id} not found`)
             }
@@ -36,9 +36,9 @@ const invokeAction = async({action, id, data})=>{
     }
 }
 
-const argv = require('yargs').argv;
-// const arr = hideBin(process.argv);
-// const {argv} = yargs(arr);
+const arr = hideBin(process.argv);
+const {argv} = yargs(arr);
+console.log(argv)
 
 invokeAction(argv);
 
@@ -50,13 +50,12 @@ invokeAction(argv);
 
 // invokeAction({action:"getById", id});
 
-// const newContactData = {
-//     name: 'Anna Kucherenko',
-//     email: 'anna@gmail.com',
-//     phone: '(073) 206-2525'
-// }
 
-// invokeAction({action:"add", data:newContactData});
+// const name = 'Anna Kucherenko'
+// const email = 'anna@gmail.com'
+// const phone = '(073) 206-2525'
+
+// invokeAction({action:"add", name, email, phone});
 
 // const updateId = "7274d648-9a1e-4f9a-b8da-fb4c420a52e5";
 
