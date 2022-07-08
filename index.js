@@ -38,35 +38,7 @@ const invokeAction = async({action, id, name, email, phone})=>{
 
 const arr = hideBin(process.argv);
 const {argv} = yargs(arr);
-console.log(argv)
 
 invokeAction(argv);
 
 
-
-// invokeAction({action:"list"});
-
-// const id = "7";
-
-// invokeAction({action:"getById", id});
-
-
-// const name = 'Anna Kucherenko'
-// const email = 'anna@gmail.com'
-// const phone = '(073) 206-2525'
-
-// invokeAction({action:"add", name, email, phone});
-
-// const updateId = "7274d648-9a1e-4f9a-b8da-fb4c420a52e5";
-
-// const updateContact = {
-//     name: 'Anna Kucherenko',
-//     email: 'ann123@gmail.com',
-//     phone: '(073) 206-2525'
-// }
-
-// invokeAction({action:"updateById", id:updateId,  data:updateContact});
-
-// const removeId = "10";
-
-// invokeAction({action:"removeById", id:removeId});
