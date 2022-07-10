@@ -39,6 +39,8 @@ const invokeAction = async({action, id, name, email, phone})=>{
 const arr = hideBin(process.argv);
 const {argv} = yargs(arr);
 
-invokeAction(argv);
+invokeAction(argv)
+.then(respons=>console.log(respons))
+.catch(err=>console.log(err.message));
 
 
